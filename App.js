@@ -7,26 +7,43 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import { connect } from 'react-redux';
+import { incrementFunction } from './src/actions';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+type Props = {
+    number:  0
+};
+class App extends Component<Props> {
+  state = {
+    number : 0
+  };
 
-type Props = {};
-export default class App extends Component<Props> {
+  constructor() {
+      super();
+      console.log(this.state, this.props);
+  }
+  componentWillReceiveProps(nextProps){
+      console.log('componentWillReceiveProps',nextProps);
+      this.setState({number: nextProps.number});
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to Dokkani</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.welcome}>{ this.state.number }</Text>
+          <Button
+              title='increment'
+              onPress={this._onPress.bind(this, this.state.number)}
+          />
       </View>
     );
   }
+    _onPress(number){
+        console.log('_onPress');
+        this.props.increment_count(number);
+    }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -46,3 +63,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+const mapStateToProps = state => {
+    return {
+        number:  state.counter.number
+    }
+};
+const mapDispatchToProps = dispatch => {
+    return {
+        increment_count : number => dispatch(incrementFunction(number))
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
