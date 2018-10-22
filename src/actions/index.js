@@ -1,10 +1,14 @@
 import { INCREMENT }  from './types';
+import { fetchToken } from "./user";
 
-export const  incrementFunction =  (number) => {
+ const  incrementFunction =  (number) => {
     return (dispatch) => {
         console.log('Action', number);
         number +=1;
       return  dispatch({ type: INCREMENT, payload : number }) ;
     }
 };
-
+export {
+    fetchToken,
+    incrementFunction
+};
