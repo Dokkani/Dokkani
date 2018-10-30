@@ -11,6 +11,7 @@ import {Platform, StyleSheet, Text, TextInput, View, Image} from 'react-native';
 import { connect } from 'react-redux';
 import { incrementFunction } from './src/actions';
 import Navigator from './src/routers';
+import "./src/ReactotronConfig";
 type Props = {
     number:  0
 };

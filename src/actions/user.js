@@ -1,8 +1,9 @@
 import {Api} from '../api';
 import {LOGIN_FAILED, LOGIN_SUCCESS} from "./types";
 
-export const fetchToken = (username, password) => async  dispatch => {
-    await Api.fetchToken(username, password)
+
+export const fetchToken = (email, password) => async  dispatch => {
+    await Api.fetchToken(email, password)
         .then(res => {
             dispatch({type: LOGIN_SUCCESS, payload: res})
         })

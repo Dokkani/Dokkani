@@ -11,6 +11,7 @@ export const sizes = {
 };
 
 export default StyleSheet.create({
+
   abs100: {
     position: 'absolute',
     width: '100%',
@@ -149,9 +150,14 @@ export default StyleSheet.create({
   },
   h3: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: '300',
+    marginLeft: 30,
   },
-
+  button_add : {
+    position: 'absolute',
+      bottom: 15,
+      right: 15,
+  },
   lightText: {
     color: Colors.grayText,
   },
