@@ -74,10 +74,9 @@ class login extends Component<Props> {
            password: null,
        }
     }
-    _onSubmit = (username, password) =>{
-        console.log(username, password);
-       this.props.login(username, password);
-        this._goToNextPage(username);
+    _onSubmit = (email, password) =>{
+        this.props.login(email, password);
+        this._goToNextPage(email);
     };
     componentWillReceiveProps(nextProp){
         console.log(nextProp.error);
@@ -111,8 +110,9 @@ const mapStatetoProp = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: (username, password) => {
-            dispatch(fetchToken(username, password));
+        login: (email, password) => {
+            dispatch(fetchToken(email, password));
+            console.log(email, password);
         }
     };
 };

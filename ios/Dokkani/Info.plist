@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>SCHOOL_PROJECT</string>
+    <key>NSCameraUsageDescription</key>
+    <string>SCHOOL_PROJECT</string>
 	<key>CFBundleDisplayName</key>
 	<string>Dokkani</string>
 	<key>CFBundleExecutable</key>

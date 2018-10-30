@@ -32,7 +32,7 @@ class SplashScreen extends Component<Props> {
     }
 
     _goToNextPage(){
-        this.props.navigation.navigate('Login') ;
+        this.props.navigation.navigate('signUp') ;
     }
 
     render() {
