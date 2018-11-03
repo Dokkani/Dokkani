@@ -40,8 +40,28 @@ const fetchToken = (email, password) => {
         console.log('ApiError :', error);
     }
 };
+const getItems = (distance, start_location, end_location) => {
+    if (distance == null) {
+        let options = {
+            method: 'POST',
+            url: `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${start_location}&destinations=${end_location}&key=${constant.PLACES_KEY}`
+        };
+        try {
+            console.log('axios google distance matrix', options);
+            axios(options)
+                .then(response => {
+                    console.log(response);
+                    return;
+                });
+        }
+        catch {
+            console.log('api error: ', error);
+        }
+    }
+}
 
 export const Api = {
     fetchToken,
     postUser,
+    getItems
 };
