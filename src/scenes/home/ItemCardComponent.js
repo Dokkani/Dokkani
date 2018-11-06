@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
 class ItemCardComponent extends Component{
         render() {
         const { item } = this.props;
-        console.log('ItemCardComponent', `data:${item.images[0].mime_type};base64,${item.images[0].source}`);
+        console.log('ItemCardComponent', `data:image/png;base64,${item.image}`);
         return (
             <Card style={styles.container}>
-                { item.images ?
+                { item.image ?
                     <Image
                         style={{
                             width: 51,
@@ -27,7 +27,7 @@ class ItemCardComponent extends Component{
                             borderRadius: 25,
                             resizeMode: 'contain',
                         }}
-                        source={{ isStatic: true, uri: `data:${item.images[0].mime_type};base64,${item.images[0].source}`}} />
+                        source={{ isStatic: true, uri: `data:image/png;base64,${item.image}`}} />
                     : <Image source={Images.item}/>
                 }
                 <View style={{flexDirection: 'column'}}>
