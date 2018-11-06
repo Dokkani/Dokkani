@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>SCHOOL_PROJECT</string>
-    <key>NSCameraUsageDescription</key>
-    <string>SCHOOL_PROJECT</string>
+	<string>SCHOOL_PROJECT</string>
+	<key>NSCameraUsageDescription</key>
+	<string>SCHOOL_PROJECT</string>
 	<key>CFBundleDisplayName</key>
 	<string>Dokkani</string>
 	<key>CFBundleExecutable</key>
@@ -74,6 +74,9 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Roboto_medium.ttf</string>
+		<string>Roboto.ttf</string>
+		<string>rubicon-icon-font.ttf</string>
 	</array>
 </dict>
 </plist>

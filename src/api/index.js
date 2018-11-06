@@ -14,6 +14,22 @@ const postUser = user => {
     };
     return axios(options);
 };
+const get_all_posts= () => {
+    let options = {
+        method: 'GET',
+        url: `${constant.API_BASE_URL}/posts/`,
+    };
+    return axios(options);
+};
+const postNewItem = item => {
+    let options = {
+        method: 'POST',
+        data: item,
+        url: `${constant.API_BASE_URL}/posts`,
+    };
+    return axios(options);
+};
+
 const fetchToken = (email, password) => {
 
     if (!email) {
@@ -44,4 +60,6 @@ const fetchToken = (email, password) => {
 export const Api = {
     fetchToken,
     postUser,
+    postNewItem,
+    get_all_posts,
 };

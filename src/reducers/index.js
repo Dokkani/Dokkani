@@ -1,5 +1,6 @@
 import { INCREMENT } from '../actions/types';
 import user from './user';
+import posts from './item';
 
 const counter = (state = 0, action ) => {
     switch (action.type) {
@@ -12,5 +13,5 @@ const counter = (state = 0, action ) => {
 }
 export default {
     user,
-    counter
+    posts,
 }

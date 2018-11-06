@@ -1,6 +1,8 @@
 import { INCREMENT }  from './types';
 import { fetchToken } from "./user";
-import { postUser } from "./signup";
+import { createUser } from "./signup";
+import { postItem } from "./postItem";
+import { getPosts } from "./items";
 
  const  incrementFunction =  (number) => {
     return (dispatch) => {
@@ -12,5 +14,7 @@ import { postUser } from "./signup";
 export {
     fetchToken,
     incrementFunction,
-    postUser
+    createUser,
+    postItem,
+    getPosts
 };
