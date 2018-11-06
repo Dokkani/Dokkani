@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { Colors, Images } from '../../theme';
 import {  FormInput, Button, Text } from 'react-native-elements'
 import {createUser } from '../../actions/signup';
-import { Api } from "../../api";
+import {Api} from "../../api";
+import {SIGNUP_FAILED, SIGNUP_SUCCESS} from "../../actions/types";
 
 const styles = StyleSheet.create({
     container: {
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
         fontFamily: 'avenir-book',
         position: 'absolute',
         left: 30,
-        top: 140,
+        top: 100,
     },
     inputText: {
         backgroundColor: '#fff',
@@ -94,13 +95,7 @@ class signUp_second extends Component {
         user.password = this.state.password;
         user.phone = this.state.phone;
         user.address = this.state.address;
-        await Api.postUser(user)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        this.props.sign_Up(user);
         this.props.navigation.navigate('Home', {
             user
         });
@@ -117,11 +112,13 @@ class signUp_second extends Component {
             <View style={styles.container}>
                 <Image resizeMode='contain' style={styles.logo} source={Images.DOKKANI_LOGO} />
                 <Text style={styles.title}>Complete Profile</Text>
+                <View style={{marginTop: 40 }}>
                 <FormInput shake={true} containerStyle={styles.inputText} placeholder='First Name' value={ this.state.first_name } onChangeText={(value) =>this.setState({first_name: value}) } />
                 <FormInput shake={true} containerStyle={styles.inputText} placeholder='Last Name' value={ this.state.last_name } onChangeText={(value) =>this.setState({last_name: value}) } />
                 <FormInput shake={true} containerStyle={styles.inputText} secureTextEntry placeholder='password' value={ this.state.password } onChangeText={(value) =>this.setState({password: value}) } />
                 <FormInput shake={true} containerStyle={styles.inputText} placeholder=' +1 | Phone Number' value={ this.state.phone } onChangeText={(value) =>this.setState({phone: value}) } />
                 <FormInput shake={true} containerStyle={styles.inputText} placeholder='Address' value={ this.state.address } onChangeText={(value) =>this.setState({address: value}) } />
+                </View>
                 <Button
                     buttonStyle={styles.buttonLogin} title='Next' onPress={() => this._onSubmit()} />
             </View>
@@ -137,7 +134,7 @@ const mapStatetoProp = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        signUp: (user) => {
+        sign_Up: (user) => {
             dispatch(createUser(user));
         }
     };

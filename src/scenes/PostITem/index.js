@@ -1,11 +1,13 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Image} from 'react-native';
+import { StyleSheet, View, Image,  ScrollView} from 'react-native';
 import { connect } from 'react-redux';
 import { Colors, Images } from '../../theme';
 import {  FormInput, Button, Text } from 'react-native-elements'
-import { fetchToken } from '../../actions/user';
 import PhotoUpload from 'react-native-photo-upload'
+import { postItem } from "../../actions/postItem";
+import { Dropdown } from 'react-native-material-dropdown';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
         height:15,
         width: 130,
         left: 0,
-        top: 40,
+        top: 20,
         marginBottom: 10,
     },
     subtitle: {
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         fontFamily: 'avenir-book',
         position: 'absolute',
         left: 30,
-        top: 140,
+        top: 40,
     },
     inputText: {
         backgroundColor: '#fff',
@@ -76,60 +78,88 @@ class PostItem extends Component<Props> {
     constructor(props: Props){
         super(props);
         this.state ={
-            item: {
                 title : null,
                 description : null,
-                upload : null,
+                avatar : null,
                 location : null,
-                price : null
-            },
+                price : null,
+                category: null,
+                image: null,
+                item: {}
         }
     }
-    _onSubmit = (username, password) =>{
-        console.log(username, password);
-        this.props.login(username, password);
-        this._goToNextPage(username);
+    _onSubmit = async () =>{
+        let item = this.state.item;
+        item.title = this.state.title;
+        item.description = this.state.description;
+        item.image =this.state.avatar;
+/*
+        item.location = this.state.location;
+*/
+        item.price = this.state.price;
+        item.category = 'clothes';
+        await this.props.postItem(item);
+        this.props.navigation.navigate('Home', {
+            item
+        });
+        console.log('item: ', item)
     };
     componentWillReceiveProps(nextProp){
         console.log(nextProp.error);
         console.log(nextProp.item);
     }
-    _goToNextPage(){
-    }
 
     render() {
+        let data = [{
+            value: 'clothes',
+        }, {
+            value: 'electronics',
+        }, {
+            value: 'household',
+        },{
+            value: 'other',
+        }];
         return (
             <View style={styles.container}>
                 <Image resizeMode='contain' style={styles.logo} source={Images.DOKKANI_LOGO} />
-                <Text style={styles.title}>Post an item</Text>
-                <FormInput shake={true} containerStyle={styles.inputText} placeholder='Product Title' value={ this.state.item.title } onChangeText={(value) =>this.setState({title: value}) } />
-                <FormInput shake={true} containerStyle={styles.inputText}  placeholder='Description' value={ this.state.item.description } onChangeText={(value) =>this.setState({description: value}) } />
-                <FormInput shake={true} containerStyle={styles.inputText} placeholder='Price per Day' value={ this.state.item.price } onChangeText={(value) =>this.setState({price: value}) } />
-                <FormInput shake={true} containerStyle={styles.inputText} placeholder='Address' value={ this.state.item.location } onChangeText={(value) =>this.setState({location: value}) } />
-                <Button
-                    buttonStyle={styles.buttonUpload} title='Upload'  onPress={() => console.log('yooo')} />
-                <PhotoUpload
-                    onPhotoSelect={avatar => {
-                        if (avatar) {
-                            console.log('Image base64 string: ', avatar)
-                        }
-                    }}
-                >
-                    <Image
-                        style={{
-                            paddingVertical: 30,
-                            width: 150,
-                            height: 150,
-                            borderRadius: 75
-                        }}
-                        resizeMode='cover'
-                        source={{
-                            uri: 'https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg'
-                        }}
+                <Text style={styles.title}>Post a New Item</Text>
+                <ScrollView>
+                <View >
+                    <PhotoUpload containerStyle={{height: 200}}
+                                 onPhotoSelect={avatar => {
+                                     if (avatar) {
+                                         this.state.avatar = avatar;
+                                         console.log(this.state.avatar);
+                                     }
+                                 }}
+                    >
+                        <Image
+                            style={{
+                                width: 60,
+                                height: 60,
+                                borderRadius: 25,
+                                marginBottom: -70,
+                            }}
+                            resizeMode='cover'
+                            source={{
+                                uri: 'https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_1280.png'
+                            }}
+                        />
+                    </PhotoUpload>
+                    <FormInput shake={true} containerStyle={styles.inputText} placeholder='Product Title' value={ this.state.title } onChangeText={(value) =>this.setState({title: value}) } />
+                    <FormInput shake={true} containerStyle={styles.inputText}  placeholder='Description' value={ this.state.description } onChangeText={(value) =>this.setState({description: value}) } />
+                    <FormInput shake={true} containerStyle={styles.inputText} placeholder='Price per Day' value={ this.state.price } onChangeText={(value) =>this.setState({price: value}) } />
+                    <FormInput shake={true} containerStyle={styles.inputText} placeholder='Address' value={ this.state.location } onChangeText={(value) =>this.setState({location: value}) } />
+                    <Dropdown
+                        label='Category'
+                        data={data}
+                        name={this.state.category}
+                        containerStyle={{width: 310, justifyContent: 'center', marginLeft: 20}}
                     />
-                </PhotoUpload>
+                </View>
                 <Button
-                    buttonStyle={styles.buttonLogin} title='Post' onPress={() => console.log('clickk')} />
+                    buttonStyle={styles.buttonLogin} title='Post' onPress={() => this._onSubmit()} />
+                </ScrollView>
             </View>
         );
     }
@@ -137,15 +167,15 @@ class PostItem extends Component<Props> {
 
 const mapStatetoProp = state => {
     return {
-        user: state.user.user,
-        error: state.user.error,
+        item: state.item,
+        error: state.error,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: (username, password) => {
-            dispatch(fetchToken(username, password));
+        postItem: (item) => {
+            dispatch(postItem(item));
         }
     };
 };
