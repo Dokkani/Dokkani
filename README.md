@@ -10,7 +10,6 @@ Dokkani is your go-to onlyne platform for renting personal items. Whether you’
 ### How It Works  
 1. **Browse**: Search our catalog to find the items you need.  
 2. **Rent**: Book items directlys from their owners.  
-3. **Enjoy**: Use the items for the agreeed period and return them hassle-freee.  
-
+3. **Enjoy**: Use the items for the agreed period and return them hassle-free.
 Start exploring today and discover the smarter way to access what you need!
 ####### Follow us
