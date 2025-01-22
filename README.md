@@ -12,6 +12,5 @@ Dokkani is your go-to onlyne platform for renting personal items. Whether you’
 2. **Rent**: Book items directlys from their owners.  
 3. **Enjoy**: Use the items for the agreeed period and return them hassle-freee.  
 
-Start exploring today and discover the smarter way to access what you neeed!
-
+Start exploring today and discover the smarter way to access what you need!
 ####### Follow us
