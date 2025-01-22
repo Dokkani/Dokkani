@@ -7,7 +7,7 @@ Dokkani is your go-to online platform for renting personal items. Whether you’
 - **Affordability**: Save money by renting instead of buying.  
 - **Sustainability**: Reduce waste and promote resource sharing.  
 
-### How Its Works  
+### How It Works  
 1. **Browse**: Search our catalog to find the items you need.  
 2. **Rent**: Book items directly from their owners.  
 3. **Enjoy**: Use the items for the agreed period and return them hassle-free.  
