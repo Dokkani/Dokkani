@@ -1,0 +1,11 @@
+{
+  "name": "Dokkani",
+  "install": "bash .cursor/install.sh",
+  "terminals": [
+    {
+      "name": "metro",
+      "command": "export NVM_DIR=\"${NVM_DIR:-$HOME/.nvm}\"; . \"$NVM_DIR/nvm.sh\"; export PATH=\"$(dirname \"$(nvm which 10)\"):$PATH\"; hash -r; exec yarn start"
+    }
+  ],
+  "ports": [8081]
+}
