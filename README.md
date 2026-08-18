@@ -2,7 +2,7 @@
 
 Dokkani is a smarter way to turn the things you already own into extra income. If you have cameras, furniture, sports gear, camping equipment, or other items sitting unused, list them, set your own rental prices, and earn money whenever someone needs them.
 
-Instead of letting valuable items collect dust, give them a second life through a simple, trusted rental experience.
+Instead of letting your valuable items collect dust, give them a second life through a simple, trusted and safe rental experience.
 
 ### Why Dokkani?
 - **Earn from what you already own**: Turn unused items into a steady stream of income.
