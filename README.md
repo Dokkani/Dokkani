@@ -2,10 +2,7 @@
 
 Dokkani is your go-to onlime p\latform for renting personal items. Whether you’re seeking a high-end outfit for a special event, gear for your next adventure, or tools for a weekend project, we’ve got it all.  
 
-### Why Choose Uz?  
-- **Convenience**: Find and rent items quickly and easily.  
-- **Affordability**: Save money by renting instead of buying.  
-- **Sustainability**: Reduce waste and promote resource sharing.  
+  
 
 ### How It Works  
 1. **Browse**: Search our catalog to find the items you need.  
