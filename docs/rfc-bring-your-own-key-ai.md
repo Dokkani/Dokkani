@@ -59,7 +59,9 @@ that lack Sourcegraph's code intelligence and governance controls.
 
 - Let an instance administrator enable AI inference using a customer-managed
   provider credential.
-- Keep Cody and other Sourcegraph AI workflows unchanged for end users.
+- Keep Cody and other Sourcegraph AI workflows unchanged for end users while a
+  valid BYOK credential is active; make provider failures clearly
+  administrator-actionable rather than silently changing billing mode.
 - Preserve Sourcegraph's repository context, permission filtering, telemetry
   controls, and abuse safeguards.
 - Ensure credentials are encrypted, never returned after submission, redacted
@@ -273,8 +275,6 @@ Sourcegraph Model Provider behavior, subject to normal credit availability.
 
 ## Open questions
 
-- Should an enabled BYOK configuration disable all hosted inference for that
-  provider, or should administrators select the desired billing mode per model?
 - What, if any, Sourcegraph AI entitlements should apply when inference credits
   are not consumed?
 - Which encrypted-secret and key-management options are supported across
